@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 代碼玩家 Nick's Blog
 subtitle: ''
-description: ''
+description: Coding for fun
 keywords:
-author: John Doe
-language: en
+author: Nick Chen
+language: zh-tw
 timezone: ''
 
 # URL
