@@ -7,17 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Categories - 代碼玩家 Nick&#39;s Blog</title>
+<title>[MaterialDesign] Android Snackbar - 代碼玩家 Nick&#39;s Blog</title>
 
 
-    <meta name="description" content="Coding for fun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:url" content="https://nickchen450.github.io/Blog/categories/index.html">
+    <meta name="description" content="Introduction在Android開發中，每次當想要像用戶顯示一些訊息，我們可能會選擇Toast，但Toast使用起來卻有一些限制，不能在文本訊息顯示的同時，包含一些文本的操作，Google在support:design library下，推出了Snackbar可以讓使用者在文本訊息的使用上更美觀，同時擁有更多的彈性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[MaterialDesign] Android Snackbar">
+<meta property="og:url" content="https://nickchen450.github.io/Blog/2018/01/22/MaterialDesign-Android-Snackbar/index.html">
 <meta property="og:site_name" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:description" content="Coding for fun">
+<meta property="og:description" content="Introduction在Android開發中，每次當想要像用戶顯示一些訊息，我們可能會選擇Toast，但Toast使用起來卻有一些限制，不能在文本訊息顯示的同時，包含一些文本的操作，Google在support:design library下，推出了Snackbar可以讓使用者在文本訊息的使用上更美觀，同時擁有更多的彈性">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
+<meta property="article:published_time" content="2018-01-22T10:30:45.000Z">
+<meta property="article:modified_time" content="2020-01-03T08:10:35.597Z">
 <meta property="article:author" content="Nick Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="Material Design">
@@ -80,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/Blog/">
             
-                <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                <img src="/Blog/images/logo.svg" alt="[MaterialDesign] Android Snackbar" height="28">
             
             </a>
         </div>
@@ -94,7 +96,7 @@
                 <a class="navbar-item"
                 href="/Blog/archives">Archives</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/Blog/categories">Categories</a>
                 
                 <a class="navbar-item"
@@ -130,18 +132,151 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-22T10:30:45.000Z">2018-01-22</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 read (About 773 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                [MaterialDesign] Android Snackbar
+            
+        </h1>
+        <div class="content">
+            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>在<strong>Android</strong>開發中，每次當想要像用戶顯示一些訊息，我們可能會選擇<strong>Toast</strong>，但<strong>Toast</strong>使用起來卻有一些限制，不能在文本訊息顯示的同時，包含一些文本的操作，<strong>Google</strong>在<strong>support:design library</strong>下，推出了<strong>Snackbar</strong>可以讓使用者在文本訊息的使用上更美觀，同時擁有更多的彈性<a id="more"></a></p>
+<p><strong>Snackbar</strong>與<strong>Toast</strong>同時都為顯示在螢幕底部的文本訊息，<strong>Snackbar</strong>擁有以下特性：<br>1.只能顯示文字，無法添加<strong>icon</strong><br>2.同時只能顯示單一個<strong>Snackbar</strong>，需連續顯示時，會等上一個<strong>dismiss</strong>後，才顯示<br>3.只能定義一個<strong>action</strong>，且功能不是取消，如果需要兩個以上的<strong>action</strong>，請使用<strong>Dialogs</strong></p>
+<p>接下來我們就來實作<strong>Snackbar</strong></p>
+<h2 id="Create-a-Snackbar"><a href="#Create-a-Snackbar" class="headerlink" title="Create a Snackbar"></a>Create a Snackbar</h2><p>要使用<strong>Snackbar</strong>，首先需要把<strong>support:design library</strong>添加進我們的<strong>Project</strong>中，在 File -&gt; Project Structure -&gt; Dependencles 下新增。<br><img src="snackbar01.png" width=100% height=100% align=center/></p>
+<p>接下來在代碼中使用<strong>Snackbar</strong>，第一個參數<strong>view</strong>必須傳入對應的<strong>根佈局</strong>，第二的參數是顯示文字，第三個參數是顯示的時間。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Snackbar.make(<span class="meta">@NonNull</span> View view, <span class="meta">@NonNull</span> CharSequence text, <span class="meta">@Duration</span> <span class="keyword">int</span> duration).show();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">View rootView = findViewById(R.id.activity_main);</span><br><span class="line">Snackbar.make(rootView, <span class="string">"Archived"</span>, Snackbar.LENGTH_LONG).show();</span><br></pre></td></tr></table></figure>
+<p>也可以透過代碼指定<strong>Snackbar</strong>持續的時間</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">snackbar = Snackbar.make(root, <span class="string">"Archived"</span>, Snackbar.LENGTH_INDEFINITE);</span><br><span class="line">snackbar.setDuration(<span class="number">3000</span>); <span class="comment">// Snackbar.LENGTH_INDEFINITE 如果沒有指定時間，Snackbar將需不會取消</span></span><br><span class="line">snackbar.show();</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：</p>
+<img src="snackbar02.gif" width=50% height=50% align=center/>
+
+<h2 id="Create-a-Snackbar-Using-CoordinatorLayout"><a href="#Create-a-Snackbar-Using-CoordinatorLayout" class="headerlink" title="Create a Snackbar Using CoordinatorLayout"></a>Create a Snackbar Using CoordinatorLayout</h2><p>如果同時使用 <strong>FloatingActionButton</strong> 與 <strong>Snackbar</strong>，會發現 <strong>Snackbar</strong> 高度會覆蓋 <strong>FloatingActionButton</strong>，如果要解決這個問題，就要使用 <strong>CoordinatorLayout</strong></p>
+<p><strong>activity</strong>佈局如下，把<strong>FloatingActionButton</strong>放進<strong>CoordinatorLayout</strong>tag裡</p>
+<p>layout:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;android.support.constraint.ConstraintLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    android:id=<span class="string">"@+id/activity_main"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.CoordinatorLayout</span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">            android:id=<span class="string">"@+id/fab_btn"</span></span><br><span class="line">            android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_gravity=<span class="string">"bottom|end"</span></span><br><span class="line">            android:layout_margin=<span class="string">"16dp"</span></span><br><span class="line">            android:src=<span class="string">"@drawable/ic_add_white_24dp"</span></span><br><span class="line">            app:fabSize=<span class="string">"normal"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/android.support.constraint.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>java:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">floatingActionButton.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">               Snackbar.make(view, <span class="string">"Archived"</span>, Snackbar.LENGTH_SHORT).show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="snackbar03.gif" width=50% height=50% align=center/></p>
+<p>搭配<strong>CoordinatorLayout</strong>，可以使<strong>Snackbar</strong>出現在任何<strong>ViewGroup的底部</strong>，做出下方效果<br><img src="snackbar04.gif" width=50% height=50% align=center/></p>
+<h2 id="Add-an-Action-to-the-Snackbar"><a href="#Add-an-Action-to-the-Snackbar" class="headerlink" title="Add an Action to the Snackbar"></a>Add an Action to the Snackbar</h2><p>如果要添加文字訊息對應的 <strong>action</strong> 操作的話，可以使用 <strong>setAction()</strong> 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snackbar.setAction(CharSequence text, <span class="keyword">final</span> View.OnClickListener listener);</span><br></pre></td></tr></table></figure>
+
+<p>java:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">snackbar = Snackbar.make(rootView, <span class="string">"Archived"</span>, Snackbar.LENGTH_INDEFINITE);</span><br><span class="line">snackbar.setDuration(<span class="number">5000</span>);</span><br><span class="line">snackbar.setAction(<span class="string">"UNDO"</span>, <span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 點擊事件</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;);</span><br><span class="line">snackbar.show();</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="snackbar05.gif" width=50% height=50% align=center/></p>
+<h2 id="Customize-the-Snackbar"><a href="#Customize-the-Snackbar" class="headerlink" title="Customize the Snackbar"></a>Customize the Snackbar</h2><p>如要改變<strong>Snackbar</strong>的含背景、訊息文字、按鈕文字顏色，則需要在呼叫<strong>show()</strong>方法前，增加以下代碼</p>
+<p>1.背景顏色</p>
+<p>java:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取出snackbar view</span></span><br><span class="line">View view = snackbar.getView();</span><br><span class="line"><span class="comment">// 更換view背景顏色</span></span><br><span class="line">view.setBackgroundColor(ContextCompat.getColor(MainActivity.<span class="keyword">this</span>, R.color.colorSnackbarBackground));</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="snackbar06.png" width=50% height=50% align=center/></p>
+<p>2.訊息文字顏色</p>
+<p>java:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取出 message textview</span></span><br><span class="line">TextView textView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);</span><br><span class="line"><span class="comment">// 改變文字顏色</span></span><br><span class="line">textView.setTextColor(ContextCompat.getColor(MainActivity.<span class="keyword">this</span>, R.color.colorSnackbarText));</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="snackbar07.png" width=50% height=50% align=center/></p>
+<p>3.<strong>Action</strong>文字顏色</p>
+<p>java:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取出 action textview</span></span><br><span class="line">TextView textView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_action);</span><br><span class="line"><span class="comment">// 改變文字顏色</span></span><br><span class="line">textView.setTextColor(ContextCompat.getColor(MainActivity.<span class="keyword">this</span>, R.color.colorSnackbarAction));</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="snackbar08.png" width=50% height=50% align=center/></p>
+<p>參考網站:<br><a href="https://developer.android.com/reference/android/support/design/widget/Snackbar.html">Android Snackbar</a><br><a href="https://material.io/guidelines/components/snackbars-toasts.html">Material Design Snackbars &amp; toasts</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/Blog/tags/Android/" rel="tag">Android</a>, <a class="has-link-grey -link" href="/Blog/tags/Material-Design/" rel="tag">Material Design</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Blog/2018/01/23/MaterialDesign-Android-Bottom-Navigation/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">[MaterialDesign] Android Bottom Navigation</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Blog/2018/01/18/MaterialDesign-Android-Dialogs/">
+                <span class="level-item">[MaterialDesign] Android Dialogs</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://nickchen450.github.io/Blog/2018/01/22/MaterialDesign-Android-Snackbar/';
+        this.page.identifier = '2018/01/22/MaterialDesign-Android-Snackbar/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'disqus_jRZqibHSyi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
                 
 
 
@@ -789,7 +924,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/Blog/">
                 
-                    <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                    <img src="/Blog/images/logo.svg" alt="[MaterialDesign] Android Snackbar" height="28">
                 
                 </a>
                 <p class="is-size-7">

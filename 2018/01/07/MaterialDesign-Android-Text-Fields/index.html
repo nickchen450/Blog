@@ -7,17 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Categories - 代碼玩家 Nick&#39;s Blog</title>
+<title>[Material Design] Android Text Fields - 代碼玩家 Nick&#39;s Blog</title>
 
 
-    <meta name="description" content="Coding for fun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:url" content="https://nickchen450.github.io/Blog/categories/index.html">
+    <meta name="description" content="IntroductionText Fields 文本框，是一種允許使用者輸入、編輯、選擇文字的封裝類，常出現在表單中，不過也可以用在 Dialog 或是 搜尋框中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Material Design] Android Text Fields">
+<meta property="og:url" content="https://nickchen450.github.io/Blog/2018/01/07/MaterialDesign-Android-Text-Fields/index.html">
 <meta property="og:site_name" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:description" content="Coding for fun">
+<meta property="og:description" content="IntroductionText Fields 文本框，是一種允許使用者輸入、編輯、選擇文字的封裝類，常出現在表單中，不過也可以用在 Dialog 或是 搜尋框中。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
+<meta property="article:published_time" content="2018-01-07T16:17:53.000Z">
+<meta property="article:modified_time" content="2020-01-03T08:10:35.573Z">
 <meta property="article:author" content="Nick Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="Material Design">
@@ -80,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/Blog/">
             
-                <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                <img src="/Blog/images/logo.svg" alt="[Material Design] Android Text Fields" height="28">
             
             </a>
         </div>
@@ -94,7 +96,7 @@
                 <a class="navbar-item"
                 href="/Blog/archives">Archives</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/Blog/categories">Categories</a>
                 
                 <a class="navbar-item"
@@ -130,18 +132,159 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-07T16:17:53.000Z">2018-01-07</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分鐘 read (About 846 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                [Material Design] Android Text Fields
+            
+        </h1>
+        <div class="content">
+            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Text Fields 文本框，是一種允許使用者輸入、編輯、選擇文字的封裝類，常出現在表單中，不過也可以用在 Dialog 或是 搜尋框中。<a id="more"></a>與 TextInputLayout 搭配使用，可以讓你的使用者體驗更佳</p>
+<p>在本篇文章中，我們要使用 support.v7 library 下的 <strong>AppCompatEditText</strong> 與 <strong>TextInputLayout</strong> 來實現我們下面的數種效果：</p>
+<h2 id="Add-a-Text-Input-Layout-to-the-AppCompat-EditText"><a href="#Add-a-Text-Input-Layout-to-the-AppCompat-EditText" class="headerlink" title="Add a Text Input Layout to the AppCompat EditText"></a>Add a Text Input Layout to the AppCompat EditText</h2><h3 id="Add-Design-Library-To-Our-Project"><a href="#Add-Design-Library-To-Our-Project" class="headerlink" title="Add Design Library To Our Project"></a>Add Design Library To Our Project</h3><p>首先我們先打開 File -&gt; Project structure -&gt; app -&gt; Dependencies，把 design library 添加進來<br> <img src="textFields05.png" width=100% height=100% align=center/></p>
+<h2 id="Add-Text-Input-Layout-to-our-Layout"><a href="#Add-Text-Input-Layout-to-our-Layout" class="headerlink" title="Add Text Input Layout to our Layout"></a>Add Text Input Layout to our Layout</h2><p>創建一個 TextInputLayout，並把 AppCompatEditText 放到裡面就完成了，運行起來會看到 hint 的文字透過動畫，上移到輸入匡的左上方</p>
+<p><strong>xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.TextInputLayout</span><br><span class="line">        android:id=<span class="string">"@+id/username_text_input_layout"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_marginBottom=<span class="string">"8dp"</span></span><br><span class="line">        android:layout_marginLeft=<span class="string">"32dp"</span></span><br><span class="line">        android:layout_marginRight=<span class="string">"32dp"</span></span><br><span class="line">        android:layout_marginTop=<span class="string">"32dp"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.AppCompatEditText</span><br><span class="line">            android:id=<span class="string">"@+id/username_text_field"</span></span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">            android:hint=<span class="string">"@string/username"</span></span><br><span class="line">            android:inputType=<span class="string">"text"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.TextInputLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br> <img src="textFields06.gif" width=50% height=50% align=center/></p>
+<p>這邊大家可以發現，focus 預設是在第一個 <strong>AppCompatEditText</strong> 上，如果想改變 focus，只要在第二個 <strong>AppCompatEditText</strong> tag 結尾加上，<strong>&lt; requestFocus /&gt;</strong> tag 就可以了</p>
+<p><strong>xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.TextInputLayout</span><br><span class="line">        android:id=<span class="string">"@+id/password_text_input_layout"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_below=<span class="string">"@id/username_text_input_layout"</span></span><br><span class="line">        android:layout_marginBottom=<span class="string">"8dp"</span></span><br><span class="line">        android:layout_marginLeft=<span class="string">"32dp"</span></span><br><span class="line">        android:layout_marginRight=<span class="string">"32dp"</span></span><br><span class="line">        android:layout_marginTop=<span class="string">"32dp"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.AppCompatEditText</span><br><span class="line">            android:id=<span class="string">"@+id/password_text_field"</span></span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">            android:hint=<span class="string">"@string/password"</span></span><br><span class="line">            android:inputType=<span class="string">"textPassword"</span> /&gt;&lt;requestFocus/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.TextInputLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br> <img src="textFields12.png" width=50% height=50% align=center/></p>
+<p>如果我們不想一開始就 focus 在任一個 <strong>AppCompatEditText</strong> 上，我們可以設定預設 focus 在最外層的 <strong>ViewGroup</strong> 上。<br>在最外層的 <strong>ViewGroup</strong> 上，添加兩個屬性 :<br>.* android:focusable=”true”<br>.* android:focusableInTouchMode=”true”</p>
+<p><strong>xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    android:id=<span class="string">"@+id/activity_main"</span></span><br><span class="line">    android:focusable=<span class="string">"true"</span></span><br><span class="line">    android:focusableInTouchMode=<span class="string">"true"</span>&gt;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="textFields08.png" width=50% height=50% align=center/></p>
+<p>如果我們還想要，在點擊 <strong>AppCompatEditText</strong> 以外的地方，移除 <strong>AppCompatEditText</strong> 的 focus 怎麼辦呢？最直接的解決辦法就是在最外層的 <strong>ViewGroup</strong> 設定點擊事件就好了，這樣當用戶點擊 <strong>AppCompatEditText</strong> 以外的地方(其實就是點擊 <strong>ViewGroup</strong> )，focus 就會移轉到<strong>ViewGroup</strong> 上。  </p>
+<p>回到我們的代碼中，新增 <strong>ViewGroup</strong> 點擊事件</p>
+<p><strong>java:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    RelativeLayout relativeLayout;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        </span><br><span class="line">        relativeLayout = findViewById(R.id.activity_main);</span><br><span class="line">        relativeLayout.setOnClickListener(<span class="keyword">null</span>);<span class="comment">// 設定點擊事件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>運行效果如下：<br> <img src="textFields09.gif" width=50% height=50% align=center/></p>
+<h2 id="More-features-of-AppCompat-EditText"><a href="#More-features-of-AppCompat-EditText" class="headerlink" title="More features of AppCompat EditText"></a>More features of AppCompat EditText</h2><p><strong>TextInputLayout</strong> 還提供一些方便的方法</p>
+<h3 id="顯示錯誤訊息"><a href="#顯示錯誤訊息" class="headerlink" title="顯示錯誤訊息"></a>顯示錯誤訊息</h3><p>可以清楚明暸的回饋給使用者一些錯誤的訊息，比如：輸入必填欄位</p>
+<p><strong>xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.TextInputLayout</span><br><span class="line">        android:id=<span class="string">"@+id/username_text_input_layout"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_marginBottom=<span class="string">"8dp"</span></span><br><span class="line">        android:layout_marginLeft=<span class="string">"32dp"</span></span><br><span class="line">        android:layout_marginRight=<span class="string">"32dp"</span></span><br><span class="line">        android:layout_marginTop=<span class="string">"32dp"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.AppCompatEditText</span><br><span class="line">            android:id=<span class="string">"@+id/username_text_field"</span></span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">            android:hint=<span class="string">"@string/username"</span></span><br><span class="line">            android:inputType=<span class="string">"text"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.TextInputLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>java:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userTextInputLayout.setErrorEnabled(<span class="keyword">true</span>);</span><br><span class="line">userTextInputLayout.setError(<span class="string">"please input user name"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="textFields10.png" width=50% height=50% align=center/></p>
+<h3 id="密碼明碼顯示"><a href="#密碼明碼顯示" class="headerlink" title="密碼明碼顯示"></a>密碼明碼顯示</h3><p>很常見的功能，可以讓使用者在送出密碼前，自己檢查密碼正確性，只要在 <strong>TextInputLayout</strong> tag 裡添加，<strong>app:passwordToggleEnabled=”true”</strong>，即可啟用</p>
+<p><strong>xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.TextInputLayout</span><br><span class="line">        android:id=<span class="string">"@+id/password_text_input_layout"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_below=<span class="string">"@id/username_text_input_layout"</span></span><br><span class="line">        android:layout_marginBottom=<span class="string">"8dp"</span></span><br><span class="line">        android:layout_marginLeft=<span class="string">"32dp"</span></span><br><span class="line">        android:layout_marginRight=<span class="string">"32dp"</span></span><br><span class="line">        android:layout_marginTop=<span class="string">"32dp"</span></span><br><span class="line">        app:passwordToggleEnabled=<span class="string">"true"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.AppCompatEditText</span><br><span class="line">            android:id=<span class="string">"@+id/password_text_field"</span></span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">            android:hint=<span class="string">"@string/password"</span></span><br><span class="line">            android:inputType=<span class="string">"textPassword"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.TextInputLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>運行效果如下：<br><img src="textFields11.png" width=50% height=50% align=center/></p>
+<h3 id="字元統計"><a href="#字元統計" class="headerlink" title="字元統計"></a>字元統計</h3><p>提供方便的字數提示，只需要在 <strong>TextInputLayout</strong> tag 中，添加屬性 <strong>app:counterEnabled</strong> 及 <strong>app:counterMaxLength</strong> 就可以了</p>
+<p><strong>xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.TextInputLayout</span><br><span class="line">       android:id=<span class="string">"@+id/password_text_input_layout"</span></span><br><span class="line">       android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">       android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">       android:layout_below=<span class="string">"@id/username_text_input_layout"</span></span><br><span class="line">       android:layout_marginBottom=<span class="string">"8dp"</span></span><br><span class="line">       android:layout_marginLeft=<span class="string">"32dp"</span></span><br><span class="line">       android:layout_marginRight=<span class="string">"32dp"</span></span><br><span class="line">       android:layout_marginTop=<span class="string">"32dp"</span></span><br><span class="line">       app:counterEnabled=<span class="string">"true"</span></span><br><span class="line">       app:counterMaxLength=<span class="string">"10"</span>&gt;</span><br><span class="line"></span><br><span class="line">       &lt;android.support.v7.widget.AppCompatEditText</span><br><span class="line">           android:id=<span class="string">"@+id/password_text_field"</span></span><br><span class="line">           android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">           android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">           android:hint=<span class="string">"@string/password"</span></span><br><span class="line">           android:inputType=<span class="string">"textPassword"</span> /&gt;&lt;requestFocus/&gt;</span><br><span class="line"></span><br><span class="line">   &lt;/android.support.design.widget.TextInputLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>也可以以代碼的方式啟用</p>
+<p><strong>java:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">passwordTextInputLayout.setCounterEnabled(<span class="keyword">true</span>);</span><br><span class="line">passwordTextInputLayout.setCounterMaxLength(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>運行效果如下：<br><img src="textFields13.png" width=50% height=50% align=center/><br>超過字數時<br><img src="textFields14.png" width=50% height=50% align=center/></p>
+<h3 id="改變顏色"><a href="#改變顏色" class="headerlink" title="改變顏色"></a>改變顏色</h3><p>系統預設正常輸入下是稍微偏紅色，與字元計數器超過自定義限制時，顏色是紫色，我們可以特過宣告 style 的方式來改變外觀</p>
+<p><strong>style:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=<span class="string">"textInputLayoutStyle"</span> parent=<span class="string">"AppTheme"</span>&gt;</span><br><span class="line">    &lt;item name=<span class="string">"colorAccent"</span>&gt;@color/colorTextInputNormal&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;style name=<span class="string">"characterOverFlowStyle"</span>&gt;</span><br><span class="line">    &lt;item name=<span class="string">"android:textColor"</span>&gt;@color/colorTextInputError&lt;/item&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>接著將 style 設定到 <strong>TextInputLayout</strong> 的屬性裡</p>
+<p><strong>xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.TextInputLayout</span><br><span class="line">       android:id=<span class="string">"@+id/password_text_input_layout"</span></span><br><span class="line">       android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">       android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">       android:layout_below=<span class="string">"@id/username_text_input_layout"</span></span><br><span class="line">       android:layout_marginBottom=<span class="string">"8dp"</span></span><br><span class="line">       android:layout_marginLeft=<span class="string">"32dp"</span></span><br><span class="line">       android:layout_marginRight=<span class="string">"32dp"</span></span><br><span class="line">       android:layout_marginTop=<span class="string">"32dp"</span></span><br><span class="line">       android:theme=<span class="string">"@style/textInputLayoutStyle"</span></span><br><span class="line">       app:counterEnabled=<span class="string">"true"</span></span><br><span class="line">       app:counterMaxLength=<span class="string">"10"</span></span><br><span class="line">       app:counterOverflowTextAppearance=<span class="string">"@style/characterOverFlowStyle"</span>&gt;</span><br><span class="line"></span><br><span class="line">       &lt;android.support.v7.widget.AppCompatEditText</span><br><span class="line">           android:id=<span class="string">"@+id/password_text_field"</span></span><br><span class="line">           android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">           android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">           android:hint=<span class="string">"@string/password"</span></span><br><span class="line">           android:inputType=<span class="string">"textPassword"</span> /&gt;</span><br><span class="line"></span><br><span class="line">   &lt;/android.support.design.widget.TextInputLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br>正常狀態下，顯示 colorTextInputNormal 顏色<br><img src="textFields15.png" width=50% height=50% align=center/><br>超過字數時，顯示 colorTextInputError 顏色<br><img src="textFields16.png" width=50% height=50% align=center/></p>
+<p>.改變<strong>hint</strong>的顏色也可以特過 <strong>app:hintTextAppearance</strong> 方法<br>.改變錯誤訊息的外觀顏色 <strong>app:errorTextAppearance</strong> 方法<br>設定方法就同設定 <strong>app:counterOverflowTextAppearance</strong> 與 <strong>characterOverFlowStyle</strong></p>
+<p>參考網站:<br><a href="https://developer.android.com/reference/android/support/design/widget/TextInputLayout.html">Android Developer</a><br><a href="https://material.io/guidelines/components/text-fields.html#">Material Design</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/Blog/tags/Android/" rel="tag">Android</a>, <a class="has-link-grey -link" href="/Blog/tags/Material-Design/" rel="tag">Material Design</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Blog/2018/01/12/MaterialDesign-Android-Buttons/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">[MaterialDesign] Android Buttons</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Blog/2018/01/01/MaterialDesign-Android-Navigation-Drawer(%E4%B8%89)-Customize-the-Navigation-Drawer/">
+                <span class="level-item">[Material Design] Android Navigation Drawer(三) - Customize the Navigation Drawer</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://nickchen450.github.io/Blog/2018/01/07/MaterialDesign-Android-Text-Fields/';
+        this.page.identifier = '2018/01/07/MaterialDesign-Android-Text-Fields/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'disqus_jRZqibHSyi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
                 
 
 
@@ -789,7 +932,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/Blog/">
                 
-                    <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                    <img src="/Blog/images/logo.svg" alt="[Material Design] Android Text Fields" height="28">
                 
                 </a>
                 <p class="is-size-7">

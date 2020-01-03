@@ -7,17 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Categories - 代碼玩家 Nick&#39;s Blog</title>
+<title>[MaterialDesign] Android AppBarLayout - 代碼玩家 Nick&#39;s Blog</title>
 
 
-    <meta name="description" content="Coding for fun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:url" content="https://nickchen450.github.io/Blog/categories/index.html">
+    <meta name="description" content="IntroductionAppBarLayout顧名思義，就是設計在導航欄(Toolbar)、頂部頁籤欄(TabLayout)一起使用，來達成一些Material Design風格的一些滑動交互效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[MaterialDesign] Android AppBarLayout">
+<meta property="og:url" content="https://nickchen450.github.io/Blog/2018/02/07/MaterialDesign-Android-AppBarLayout/index.html">
 <meta property="og:site_name" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:description" content="Coding for fun">
+<meta property="og:description" content="IntroductionAppBarLayout顧名思義，就是設計在導航欄(Toolbar)、頂部頁籤欄(TabLayout)一起使用，來達成一些Material Design風格的一些滑動交互效果。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
+<meta property="article:published_time" content="2018-02-07T11:17:04.000Z">
+<meta property="article:modified_time" content="2020-01-03T08:10:35.621Z">
 <meta property="article:author" content="Nick Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="Material Design">
@@ -80,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/Blog/">
             
-                <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                <img src="/Blog/images/logo.svg" alt="[MaterialDesign] Android AppBarLayout" height="28">
             
             </a>
         </div>
@@ -94,7 +96,7 @@
                 <a class="navbar-item"
                 href="/Blog/archives">Archives</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/Blog/categories">Categories</a>
                 
                 <a class="navbar-item"
@@ -130,18 +132,133 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-02-07T11:17:04.000Z">2018-02-07</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分鐘 read (About 844 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                [MaterialDesign] Android AppBarLayout
+            
+        </h1>
+        <div class="content">
+            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>AppBarLayout</strong>顧名思義，就是設計在<strong>導航欄(Toolbar)</strong>、<strong>頂部頁籤欄(TabLayout)</strong>一起使用，來達成一些<strong>Material Design</strong>風格的一些滑動交互效果。<a id="more"></a><br><img src="appbar01.gif" width=50% height=50% align=center/></p>
+<p><strong>AppBarLayout</strong>本質上是一個垂直的<strong>LinearLayout</strong>，不過為了實現滑動交互的效果，因此嚴重依賴於<strong>CoordinatorLayout</strong>，如果在別的<strong>ViewGroup</strong>裡，則無法發揮<strong>AppBarLayout</strong>大部分的功能。</p>
+<p><strong>AppBarLayout</strong>同時要求<strong>Child</strong>明確的設置各自的<strong>AppBarLayout.ScrollingViewBehavior</strong>，在代碼中可以使用<strong>setScrollFlags(int)</strong>方法，在佈局中可以使用<strong>app:layout_scrollFlags</strong>屬性。</p>
+<p>設定<strong>scrollFlags</strong>，必須使用<strong>AppBarLayout.LayoutParams</strong>中已經定義好的五個常量：<br><strong>SCROLL_FLAG_SCROLL</strong><br><strong>SCROLL_FLAG_ENTER_ALWAYS</strong><br><strong>SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED</strong><br><strong>SCROLL_FLAG_EXIT_UNTIL_COLLAPSED</strong><br><strong>SCROLL_FLAG_SNAP</strong></p>
+<p>接下來我們將一一介紹這些<strong>flag</strong>的不同</p>
+<h2 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h2><p><strong>Child View</strong>跟滾動事件有直接的關係，也就是說只要手指一滑動，<strong>AppBar</strong>必定會隨著滑動往上推，或滑動到頂部顯示，這邊有兩點要注意一下。</p>
+<p>第一點:如果設置其他的<strong>Flag</strong>，必須伴隨著使用<strong>SCROLL_FLAG_SCROLL</strong>才有作用。<br>第二點:在<strong>AppBarLayout</strong>裡這個<strong>Child View</strong>，前面沒有任何<strong>Child View</strong>設置這個值，那麼這個<strong>Child View</strong>設置將失去任何作用</p>
+<p>第一點稍後做說明，第二點的意思如下圖所示:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    tools:context=<span class="string">"net.nickchen45.appbardemo.MainActivity"</span>&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;android.support.design.widget.AppBarLayout</span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:id=<span class="string">"@+id/appbar_id"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">            android:text=<span class="string">"@string/child_view"</span></span><br><span class="line">            android:textSize=<span class="string">"22sp"</span></span><br><span class="line">            android:textColor=<span class="string">"@android:color/white"</span></span><br><span class="line">            android:gravity=<span class="string">"center"</span></span><br><span class="line">            app:layout_scrollFlags=<span class="string">"scroll"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">            android:id=<span class="string">"@+id/toolbar_id"</span></span><br><span class="line">            android:theme=<span class="string">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>大家可以看到<strong>AppBarLayout</strong>裡，有兩個<strong>Child View</strong>，第二個<strong>Child View(Toolbar)</strong>，前面有一個<strong>Child View(TextView)</strong>，且設置著<strong>app:layout_scrollFlags=”scroll”</strong>。<br>運行效果如下:<br><img src="appbar02.gif" width=50% height=50% align=center/></p>
+<p>如果把第一個<strong>Child View(TextView)</strong>的<strong>Flag移除</strong>，並在第二個<strong>Child View(Toolbar)</strong>中設置，由於第一個<strong>Child View</strong>沒有設置任何<strong>Flag</strong>，所以第二個<strong>Child View(TextView)</strong>即使設置<strong>Flag</strong>也沒有效果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    tools:context=<span class="string">"net.nickchen45.appbardemo.MainActivity"</span>&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;android.support.design.widget.AppBarLayout</span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:id=<span class="string">"@+id/appbar_id"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">            android:text=<span class="string">"@string/child_view"</span></span><br><span class="line">            android:textSize=<span class="string">"22sp"</span></span><br><span class="line">            android:textColor=<span class="string">"@android:color/white"</span></span><br><span class="line">            android:gravity=<span class="string">"center"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_height=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">            android:id=<span class="string">"@+id/toolbar_id"</span></span><br><span class="line">            android:theme=<span class="string">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span></span><br><span class="line">            app:layout_scrollFlags=<span class="string">"scroll"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>運行效果如下:<br><img src="appbar03.gif" width=50% height=50% align=center/></p>
+<h2 id="enterAlways"><a href="#enterAlways" class="headerlink" title="enterAlways"></a>enterAlways</h2><p>在<strong>app:layout_scrollFlags</strong>設置此屬性，與前者<strong>scroll</strong>對比，前者是先滾動 Scrolling View，後者是先滾動 Child View，當優先滾動的一方全部顯示後，另一方才會開始滾動</p>
+<p>在<strong>AppBarLayout</strong>的<strong>Child View</strong>中設置屬性，前面有說明，除了<strong>scroll</strong>之外其他的<strong>Flag</strong>，都需搭配<strong>scroll</strong>使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app:layout_scrollFlags=<span class="string">"scroll|enterAlways"</span></span><br></pre></td></tr></table></figure>
+<p>運行效果如下:<br><img src="appbar04.gif" width=50% height=50% align=center/></p>
+<h2 id="enterAlwaysCollapsed"><a href="#enterAlwaysCollapsed" class="headerlink" title="enterAlwaysCollapsed"></a>enterAlwaysCollapsed</h2><p><strong>enterAlways</strong>的附加<strong>flag</strong>，向下滾動時，先會顯示<strong>Child View</strong>的最小高度，等待<strong>ScrollView</strong>滑至頂部時，<strong>Child View</strong>再向下滾動，直到完全顯示</p>
+<p>需要定義高度、最小高度、<strong>Flag</strong>等屬性</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android:layout_height=<span class="string">"200dp"</span></span><br><span class="line">android:minHeight=<span class="string">"56dp"</span></span><br><span class="line">app:layout_scrollFlags=<span class="string">"scroll|enterAlways|enterAlwaysCollapsed"</span></span><br></pre></td></tr></table></figure>
+<p>運行效果如下:<br><img src="appbar05.gif" width=50% height=50% align=center/></p>
+<h2 id="exitUntilCollapsed"><a href="#exitUntilCollapsed" class="headerlink" title="exitUntilCollapsed"></a>exitUntilCollapsed</h2><p>當發生向上滾動事件時，<strong>Child View</strong>會退出螢幕外至保留最小高度，向下滑動到頂部時，<strong>Child View</strong>才會向下滾動，直到完全顯示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android:layout_height=<span class="string">"200dp"</span></span><br><span class="line">android:minHeight=<span class="string">"56dp"</span></span><br><span class="line">app:layout_scrollFlags=<span class="string">"scroll|exitUntilCollapsed"</span></span><br></pre></td></tr></table></figure>
+<p>運行效果如下:<br><img src="appbar06.gif" width=50% height=50% align=center/></p>
+<h2 id="snap"><a href="#snap" class="headerlink" title="snap"></a>snap</h2><p><strong>snap</strong>簡單理解，就是<strong>child view</strong>有一個滾動的吸附效果，當<strong>child view</strong>滾動達到一定比例，即使手指放開，也會自動滾動到全部顯示，反之則會退出螢幕</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:layout_height=<span class="string">"200dp"</span></span><br><span class="line">app:layout_scrollFlags=<span class="string">"scroll|snap"</span></span><br></pre></td></tr></table></figure>
+<p>運行效果如下:<br><img src="appbar07.gif" width=50% height=50% align=center/></p>
+<p>參考資料：<br><a href="https://developer.android.com/reference/android/support/design/widget/AppBarLayout.html">AppBarLayout</a><br><a href="https://developer.android.com/reference/android/support/design/widget/AppBarLayout.LayoutParams.html#SCROLL_FLAG_SNAP">AppBarLayout.LayoutParams</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/Blog/tags/Android/" rel="tag">Android</a>, <a class="has-link-grey -link" href="/Blog/tags/Material-Design/" rel="tag">Material Design</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Blog/2018/02/21/MaterialDesign-Android-Collapsing-Toolbar-Layout/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">[MaterialDesign] Android Collapsing Toolbar Layout</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Blog/2018/02/05/MaterialDesign-Android-CoordinatorLayout/">
+                <span class="level-item">[MaterialDesign] Android CoordinatorLayout</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://nickchen450.github.io/Blog/2018/02/07/MaterialDesign-Android-AppBarLayout/';
+        this.page.identifier = '2018/02/07/MaterialDesign-Android-AppBarLayout/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'disqus_jRZqibHSyi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
                 
 
 
@@ -789,7 +906,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/Blog/">
                 
-                    <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                    <img src="/Blog/images/logo.svg" alt="[MaterialDesign] Android AppBarLayout" height="28">
                 
                 </a>
                 <p class="is-size-7">

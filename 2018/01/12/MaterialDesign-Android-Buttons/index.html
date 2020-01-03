@@ -7,17 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Categories - 代碼玩家 Nick&#39;s Blog</title>
+<title>[MaterialDesign] Android Buttons - 代碼玩家 Nick&#39;s Blog</title>
 
 
-    <meta name="description" content="Coding for fun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:url" content="https://nickchen450.github.io/Blog/categories/index.html">
+    <meta name="description" content="Introduction在Material Design中，Button 共分為三類">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[MaterialDesign] Android Buttons">
+<meta property="og:url" content="https://nickchen450.github.io/Blog/2018/01/12/MaterialDesign-Android-Buttons/index.html">
 <meta property="og:site_name" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:description" content="Coding for fun">
+<meta property="og:description" content="Introduction在Material Design中，Button 共分為三類">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
+<meta property="article:published_time" content="2018-01-12T14:43:24.000Z">
+<meta property="article:modified_time" content="2020-01-03T08:10:35.581Z">
 <meta property="article:author" content="Nick Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="Material Design">
@@ -80,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/Blog/">
             
-                <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                <img src="/Blog/images/logo.svg" alt="[MaterialDesign] Android Buttons" height="28">
             
             </a>
         </div>
@@ -94,7 +96,7 @@
                 <a class="navbar-item"
                 href="/Blog/archives">Archives</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/Blog/categories">Categories</a>
                 
                 <a class="navbar-item"
@@ -130,18 +132,158 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-12T14:43:24.000Z">2018-01-12</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 read (About 585 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                [MaterialDesign] Android Buttons
+            
+        </h1>
+        <div class="content">
+            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>在<strong>Material Design</strong>中，Button 共分為三類<a id="more"></a></p>
+<h3 id="Raised-button"><a href="#Raised-button" class="headerlink" title="Raised button"></a>Raised button</h3><p>凸起式按鈕，按下去會有一個下壓的效果<br><img src="button01.png" width=50% height=50% align=center/></p>
+<h3 id="Flat-button"><a href="#Flat-button" class="headerlink" title="Flat button"></a>Flat button</h3><p>平面按鈕，也稱作純文本按鈕，並沒有像<strong>Raised buttons</strong>一樣，有下壓效果，常用於 <strong>dialog</strong>、<strong>toolbar</strong>中<br><img src="button02.png" width=50% height=50% align=center/><br><img src="button03.png" width=50% height=50% align=center/></p>
+<h3 id="Floating-button"><a href="#Floating-button" class="headerlink" title="Floating button"></a>Floating button</h3><p>顧名思義就是浮著的Button，在設計上通常一個介面只會存在一個，代表此頁最常見的功能鈕<br><img src="button04.png" width=50% height=50% align=center/><br><img src="button05.png" width=50% height=50% align=center/></p>
+<p>接下來我們來看看在<strong>Android</strong>裡如何實現。</p>
+<h2 id="Create-a-Raised-button"><a href="#Create-a-Raised-button" class="headerlink" title="Create a Raised button"></a>Create a Raised button</h2><p>使用<strong>Raised buttons</strong>很容易，只要在 layout 裡直接引用<strong>AppConpact Library</strong>裡的，具有<strong>Material features</strong> 的 <strong>AppCompatButton</strong> 就可以了</p>
+<p><strong>layout:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.AppCompatButton</span><br><span class="line">      android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">      android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">      android:text=<span class="string">"@string/raised_button"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="button06.png" width=50% height=50% align=center/></p>
+<p>如何更換<strong>AppCompatButton</strong>的按鈕顏色呢？<br>首先打開<strong>sytles.xml</strong>文件，在裡面創建一個 new style 定義背景及文字顏色</p>
+<p><strong>styles.xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">   ...</span><br><span class="line">   &lt;style name=<span class="string">"RaiseButton"</span> parent=<span class="string">"Widget.AppCompat.Button.Colored"</span>&gt;</span><br><span class="line">        &lt;item name=<span class="string">"android:backgroundTint"</span>&gt;@color/colorRaisedButton&lt;/item&gt;</span><br><span class="line">        &lt;item name=<span class="string">"android:textColor"</span>&gt;@color/colorRaisedButtonText&lt;/item&gt;</span><br><span class="line">   &lt;/style&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+
+<p>接著再回到 layout 文件的<strong>AppCompatButton</strong>中，設定剛剛新增的 style</p>
+<p><strong>layout:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.AppCompatButton</span><br><span class="line">       android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">       android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">       android:text=<span class="string">"@string/raised_button"</span></span><br><span class="line">       style=<span class="string">"@style/RaiseButton"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="button07.png" width=50% height=50% align=center/></p>
+<h2 id="Create-a-Flat-button"><a href="#Create-a-Flat-button" class="headerlink" title="Create a Flat button"></a>Create a Flat button</h2><p>創建<strong>Flat button</strong>也很容易，打開<strong>sytles.xml</strong>文件，在裡面創建一個 new style，<strong>Widget.AppCompat.Button.Borderless</strong> 表示你的按鈕背景為透明，當然你也可以在<strong>style</strong>裡，定義文字的顏色</p>
+<p><strong>styles.xml:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line">   ...</span><br><span class="line">   &lt;style name=<span class="string">"FlatButton"</span> parent=<span class="string">"Widget.AppCompat.Button.Borderless"</span>&gt;</span><br><span class="line">     </span><br><span class="line">   &lt;/style&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+
+<p>接著創建一個<strong>AppCompatButton</strong>，把<strong>sytle</strong>設定進去就好</p>
+<p><strong>layout:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.AppCompatButton</span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:text=<span class="string">"@string/flat_button"</span></span><br><span class="line">        style=<span class="string">"@style/FlatButton"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="button08.png" width=50% height=50% align=center/></p>
+<h2 id="Create-a-Floating-Action-Button"><a href="#Create-a-Floating-Action-Button" class="headerlink" title="Create a Floating Action Button"></a>Create a Floating Action Button</h2><p>接下來我們來創建<strong>Floating Action Buttonn</strong>，首先要先確認<strong>Design Library</strong>有加進我們的<strong>Project</strong><br><img src="button09.png" width=100% height=100% align=center/></p>
+<p>之後就可以在 layout 裡直接引用了</p>
+<p><strong>layout:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">       android:id=<span class="string">"@+id/fab_btn"</span></span><br><span class="line">       android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">       android:layout_height=<span class="string">"wrap_content"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="button10.png" width=50% height=50% align=center/></p>
+<p>你也可以在<strong>Floating Action Buttonn</strong>中，添加icon</p>
+<p><strong>layout:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">       android:id=<span class="string">"@+id/fab_btn"</span></span><br><span class="line">       android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">       android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">       android:src=<span class="string">"@drawable/ic_dialog_email"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="button11.png" width=50% height=50% align=center/></p>
+<p>設定<strong>Floating Action Buttonn</strong>的size<br>以 size 可分為:<br><strong>1.noraml circle = 56x56dp</strong><br><strong>2.Mini circle = 40x40dp</strong></p>
+<p><strong>layout:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">       android:id=<span class="string">"@+id/fab_btn"</span></span><br><span class="line">       android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">       android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">       android:src=<span class="string">"@drawable/ic_dialog_email"</span></span><br><span class="line">       app:fabSize=<span class="string">"normal"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="button12.png" width=70% height=70% align=center/></p>
+<p><strong>Floating Action Buttonn</strong>還有一個很符合此命名的屬性 elevation<br>其中 elevation 設定的 DP 越大，則按鈕背後的陰影也會越大</p>
+<p><strong>layout:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">       android:id=<span class="string">"@+id/fab_btn"</span></span><br><span class="line">       android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">       android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">       android:src=<span class="string">"@drawable/ic_dialog_email"</span></span><br><span class="line">       app:fabSize=<span class="string">"normal"</span></span><br><span class="line">       app:elevation=<span class="string">"8dp"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="button13.png" width=70% height=70% align=center/></p>
+<p><strong>Floating Action Buttonn</strong>的背景顏色預設是<strong>@color/colorAccent</strong>，如果想要自訂背景顏色，只要改變屬性:<strong>backgroundTint</strong>就可以了<br><strong>layout:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">       android:id=<span class="string">"@+id/fab_btn"</span></span><br><span class="line">       android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">       android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">       android:src=<span class="string">"@drawable/ic_dialog_email"</span></span><br><span class="line">       app:fabSize=<span class="string">"normal"</span></span><br><span class="line">       app:backgroundTint=<span class="string">"@color/holo_green_dark"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下：<br><img src="button14.png" width=50% height=50% align=center/></p>
+<p>參考網站:<br><a href="https://developer.android.com/reference/android/widget/Button.html">Android Developer</a><br><a href="https://material.io/guidelines/components/buttons.html#">Material Design Buttons</a><br><a href="https://material.io/guidelines/components/buttons-floating-action-button.html#buttons-floating-action-button-floating-action-button">Material Design Buttons: Floating Action Button</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/Blog/tags/Android/" rel="tag">Android</a>, <a class="has-link-grey -link" href="/Blog/tags/Material-Design/" rel="tag">Material Design</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Blog/2018/01/15/MaterialDesign-Android-Selection-Controls/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">[MaterialDesign] Android Selection Controls</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Blog/2018/01/07/MaterialDesign-Android-Text-Fields/">
+                <span class="level-item">[Material Design] Android Text Fields</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://nickchen450.github.io/Blog/2018/01/12/MaterialDesign-Android-Buttons/';
+        this.page.identifier = '2018/01/12/MaterialDesign-Android-Buttons/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'disqus_jRZqibHSyi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
                 
 
 
@@ -789,7 +931,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/Blog/">
                 
-                    <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                    <img src="/Blog/images/logo.svg" alt="[MaterialDesign] Android Buttons" height="28">
                 
                 </a>
                 <p class="is-size-7">

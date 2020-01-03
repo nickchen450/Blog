@@ -7,17 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Categories - 代碼玩家 Nick&#39;s Blog</title>
+<title>[Material Design] Android Navigation Drawer(三) - Customize the Navigation Drawer - 代碼玩家 Nick&#39;s Blog</title>
 
 
-    <meta name="description" content="Coding for fun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:url" content="https://nickchen450.github.io/Blog/categories/index.html">
+    <meta name="description" content="Introduction在本篇文章中，我們要客製化實現數種 Navigation Drawer 展開時的顯示方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Material Design] Android Navigation Drawer(三) - Customize the Navigation Drawer">
+<meta property="og:url" content="https://nickchen450.github.io/Blog/2018/01/01/MaterialDesign-Android-Navigation-Drawer(%E4%B8%89)-Customize-the-Navigation-Drawer/index.html">
 <meta property="og:site_name" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:description" content="Coding for fun">
+<meta property="og:description" content="Introduction在本篇文章中，我們要客製化實現數種 Navigation Drawer 展開時的顯示方式">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
+<meta property="article:published_time" content="2018-01-01T14:56:36.000Z">
+<meta property="article:modified_time" content="2020-01-03T08:10:35.557Z">
 <meta property="article:author" content="Nick Chen">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="Material Design">
@@ -80,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/Blog/">
             
-                <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                <img src="/Blog/images/logo.svg" alt="[Material Design] Android Navigation Drawer(三) - Customize the Navigation Drawer" height="28">
             
             </a>
         </div>
@@ -94,7 +96,7 @@
                 <a class="navbar-item"
                 href="/Blog/archives">Archives</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/Blog/categories">Categories</a>
                 
                 <a class="navbar-item"
@@ -130,18 +132,135 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-01T14:56:36.000Z">2018-01-01</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 read (About 563 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                [Material Design] Android Navigation Drawer(三) - Customize the Navigation Drawer
+            
+        </h1>
+        <div class="content">
+            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>在本篇文章中，我們要客製化實現數種 Navigation Drawer 展開時的顯示方式<a id="more"></a></p>
+<h3 id="Placing-the-Navigation-Drawer-inside-status-bar"><a href="#Placing-the-Navigation-Drawer-inside-status-bar" class="headerlink" title="Placing the Navigation Drawer inside status bar"></a>Placing the Navigation Drawer inside status bar</h3><p>接下來我們要設定 Navigation Drawer 展開時會符合整個螢幕，不會受到 status bar 限制</p>
+<img src="navigationDrawerCustomize01.png" width=50% height=50% align=center/>
+
+<p>首先我們打開 values 目錄下的 styles.xml 文件，創建一個新 style name = “AppTheme.NoActionBar”<br><img src="navigationDrawerCustomize02.png" width=100% height=100% align=center/></p>
+<p>接下來我們打開 manifests 目錄下 AndroidManifest.xml 文件，修改我們顯示 Navigation drawer 的 Activity Theme 為剛剛創建的 style<br><img src="navigationDrawerCustomize03.png" width=100% height=100% align=center/></p>
+<p>接著回到剛剛創建的 style tag 下，增加幾條屬性</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;resources&gt;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">    &lt;style name=<span class="string">"AppTheme.NoActionBar"</span>&gt;</span><br><span class="line">        &lt;!--此屬性表示 Activity 不會有預設的 Toolbar--&gt;</span><br><span class="line">        &lt;item name=<span class="string">"windowActionBar"</span>&gt;<span class="literal">false</span>&lt;/item&gt;</span><br><span class="line">        &lt;!--此屬性表示 Activity 預設的 Toolbar 將不會有 label--&gt;</span><br><span class="line">        &lt;item name=<span class="string">"windowNoTitle"</span>&gt;<span class="literal">true</span>&lt;/item&gt;</span><br><span class="line">        &lt;item name=<span class="string">"android:windowDrawsSystemBarBackgrounds"</span>&gt;<span class="literal">true</span>&lt;/item&gt;</span><br><span class="line">        &lt;!--此屬性表示 status bar 背景為透明--&gt;</span><br><span class="line">        &lt;item name=<span class="string">"android:statusBarColor"</span>&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下:<br><img src="navigationDrawerCustomize04.png" width=50% height=50% align=center/></p>
+<h3 id="Placing-the-Navigation-Drawer-under-the-Toolbar"><a href="#Placing-the-Navigation-Drawer-under-the-Toolbar" class="headerlink" title="Placing the Navigation Drawer under the Toolbar"></a>Placing the Navigation Drawer under the Toolbar</h3><p>接下來我們要設定 Navigation Drawer 展開時，不會覆蓋到 Toolbar，會在其下方</p>
+<p>首先，我們要先把上一部分新增的 style 移除，並將 manifests 的 Activity theme屬性移除<br><img src="navigationDrawerCustomize05.png" width=100% height=100% align=center/><br><img src="navigationDrawerCustomize06.png" width=100% height=100% align=center/></p>
+<p>緊接著我們打開 layout目錄下 navigation_drawer.xml 文件，並在最外層新增一個 view group 佈局<br><img src="navigationDrawerCustomize07.png" width=100% height=100% align=center/></p>
+<p>接下來我們把 import activity 的 include tag 搬到最外層的 view group tag 下，並把 DrawerLayout tag 中修改屬性 android:fitsSystemWindows 為 false 與新增屬性 android:layout_marginTop=”?attr/actionBarSize”<br><img src="navigationDrawerCustomize08.png" width=100% height=100% align=center/></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;RelativeLayout</span><br><span class="line">    ...</span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;include layout=<span class="string">"@layout/activity_main"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v4.widget.DrawerLayout</span><br><span class="line">        android:orientation=<span class="string">"vertical"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">        android:id=<span class="string">"@+id/drawer_layout"</span></span><br><span class="line">        android:layout_marginTop=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">        android:fitsSystemWindows=<span class="string">"false"</span></span><br><span class="line">        tools:openDrawer=<span class="string">"start"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.design.widget.NavigationView</span><br><span class="line">            android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">            android:id=<span class="string">"@+id/navigation_view"</span></span><br><span class="line">            android:layout_gravity=<span class="string">"start"</span></span><br><span class="line">            android:fitsSystemWindows=<span class="string">"true"</span></span><br><span class="line">            app:headerLayout=<span class="string">"@layout/navigation_header"</span></span><br><span class="line">            app:menu=<span class="string">"@menu/navigation_menu"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.v4.widget.DrawerLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下:<br><img src="navigationDrawerCustomize09.gif" width=50% height=50% align=center/></p>
+<p>這時候我們想要在 Navigation Drawer 打開時，讓背景 activity 顯示為灰色，首先需要把 include activity tag 重新放回 DrawerLayout tag 中，並移除屬性  android:layout_marginTop=”?attr/actionBarSize”，最後一步在 NavigationView tag 下新增屬性 android:layout_marginTop=”?attr/actionBarSize” 與修改屬性 android:fitsSystemWindows 為 false</p>
+<img src="navigationDrawerCustomize10.png" width=100% height=100% align=center/>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;RelativeLayout </span><br><span class="line">    ...</span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v4.widget.DrawerLayout</span><br><span class="line">        android:id=<span class="string">"@+id/drawer_layout"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">        android:fitsSystemWindows=<span class="string">"false"</span></span><br><span class="line">        android:orientation=<span class="string">"vertical"</span></span><br><span class="line">        tools:openDrawer=<span class="string">"start"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;include layout=<span class="string">"@layout/activity_main"</span> /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.design.widget.NavigationView</span><br><span class="line">            android:id=<span class="string">"@+id/navigation_view"</span></span><br><span class="line">            android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">            android:layout_gravity=<span class="string">"start"</span></span><br><span class="line">            android:layout_marginTop=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">            android:fitsSystemWindows=<span class="string">"false"</span></span><br><span class="line">            app:headerLayout=<span class="string">"@layout/navigation_header"</span></span><br><span class="line">            app:menu=<span class="string">"@menu/navigation_menu"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.v4.widget.DrawerLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下:<br><img src="navigationDrawerCustomize11.gif" width=50% height=50% align=center/></p>
+<p>可能你又有以下需求，我只要 activity 背景變暗就好，Toolbar 不用</p>
+<p>首先在 res -&gt; layout 目錄下新增一個 toolbar_layout.xml<br><img src="navigationDrawerCustomize12.png" width=100% height=100% align=center/></p>
+<p>接著把 activity 中的 toolbar tag 移除<br><img src="navigationDrawerCustomize13.png" width=100% height=100% align=center/></p>
+<p>再回到 navigation_drawer.xml 文件下，將剛剛新增的 toolbar_layout.xml 利用 include tag import 進來，並將 NavigationView tag 的屬性 android:layout_marginTop=”?attr/actionBarSize” 移動到 DrawerLayout tag 中<br><img src="navigationDrawerCustomize14.png" width=100% height=100% align=center/></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;RelativeLayout</span><br><span class="line">    ...</span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;include layout=<span class="string">"@layout/toolbar_layout"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v4.widget.DrawerLayout</span><br><span class="line">        android:orientation=<span class="string">"vertical"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">        android:id=<span class="string">"@+id/drawer_layout"</span></span><br><span class="line">        android:layout_marginTop=<span class="string">"?attr/actionBarSize"</span></span><br><span class="line">        android:fitsSystemWindows=<span class="string">"false"</span></span><br><span class="line">        tools:openDrawer=<span class="string">"start"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;include layout=<span class="string">"@layout/activity_main"</span>/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.design.widget.NavigationView</span><br><span class="line">            android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">            android:id=<span class="string">"@+id/navigation_view"</span></span><br><span class="line">            android:layout_gravity=<span class="string">"start"</span></span><br><span class="line">            android:fitsSystemWindows=<span class="string">"false"</span></span><br><span class="line">            app:headerLayout=<span class="string">"@layout/navigation_header"</span></span><br><span class="line">            app:menu=<span class="string">"@menu/navigation_menu"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.v4.widget.DrawerLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>運行效果如下:<br><img src="navigationDrawerCustomize15.gif" width=50% height=50% align=center/></p>
+<p>參考網站:<br><a href="https://developer.android.com/training/implementing-navigation/nav-drawer.html">Android Developer</a><br><a href="https://material.io/guidelines/patterns/navigation-drawer.html">Material Design</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/Blog/tags/Android/" rel="tag">Android</a>, <a class="has-link-grey -link" href="/Blog/tags/Material-Design/" rel="tag">Material Design</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Blog/2018/01/07/MaterialDesign-Android-Text-Fields/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">[Material Design] Android Text Fields</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Blog/2017/12/30/MaterialDesign-Android-Navigation-Drawer(%E4%BA%8C)-Add-OnClickListener/">
+                <span class="level-item">[Material Design] Android Navigation Drawer(二) - Add OnClickListener</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://nickchen450.github.io/Blog/2018/01/01/MaterialDesign-Android-Navigation-Drawer(%E4%B8%89)-Customize-the-Navigation-Drawer/';
+        this.page.identifier = '2018/01/01/MaterialDesign-Android-Navigation-Drawer(三)-Customize-the-Navigation-Drawer/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'disqus_jRZqibHSyi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
                 
 
 
@@ -789,7 +908,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/Blog/">
                 
-                    <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                    <img src="/Blog/images/logo.svg" alt="[Material Design] Android Navigation Drawer(三) - Customize the Navigation Drawer" height="28">
                 
                 </a>
                 <p class="is-size-7">

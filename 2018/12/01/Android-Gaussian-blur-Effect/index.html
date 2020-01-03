@@ -7,20 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Categories - 代碼玩家 Nick&#39;s Blog</title>
+<title>[Android] Gaussian blur Effect - 代碼玩家 Nick&#39;s Blog</title>
 
 
-    <meta name="description" content="Coding for fun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:url" content="https://nickchen450.github.io/Blog/categories/index.html">
+    <meta name="description" content="Intrdoction本篇文章來介紹，如何在Android上，簡單實現高斯模糊（Gaussian blur)效果。又稱毛玻璃效果或磨砂效果。透果使用Google提供的RenderScriptApi，一個強大的圖片處理框架，幫助Android開法者專注於圖片處理算法的邏輯，而不是處理圖像複雜的計算。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Android] Gaussian blur Effect">
+<meta property="og:url" content="https://nickchen450.github.io/Blog/2018/12/01/Android-Gaussian-blur-Effect/index.html">
 <meta property="og:site_name" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:description" content="Coding for fun">
+<meta property="og:description" content="Intrdoction本篇文章來介紹，如何在Android上，簡單實現高斯模糊（Gaussian blur)效果。又稱毛玻璃效果或磨砂效果。透果使用Google提供的RenderScriptApi，一個強大的圖片處理框架，幫助Android開法者專注於圖片處理算法的邏輯，而不是處理圖像複雜的計算。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
+<meta property="article:published_time" content="2018-12-01T16:50:50.000Z">
+<meta property="article:modified_time" content="2020-01-03T08:10:35.697Z">
 <meta property="article:author" content="Nick Chen">
 <meta property="article:tag" content="Android">
-<meta property="article:tag" content="Material Design">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
 
@@ -80,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/Blog/">
             
-                <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                <img src="/Blog/images/logo.svg" alt="[Android] Gaussian blur Effect" height="28">
             
             </a>
         </div>
@@ -94,7 +95,7 @@
                 <a class="navbar-item"
                 href="/Blog/archives">Archives</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/Blog/categories">Categories</a>
                 
                 <a class="navbar-item"
@@ -130,18 +131,114 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-01T16:50:50.000Z">2018-12-01</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 read (About 543 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                [Android] Gaussian blur Effect
+            
+        </h1>
+        <div class="content">
+            <h2 id="Intrdoction"><a href="#Intrdoction" class="headerlink" title="Intrdoction"></a>Intrdoction</h2><p>本篇文章來介紹，如何在<code>Android</code>上，簡單實現高斯模糊（Gaussian blur)效果。又稱毛玻璃效果或磨砂效果。透果使用<code>Google</code>提供的<code>RenderScript</code>Api，一個強大的圖片處理框架，幫助<code>Android</code>開法者專注於圖片處理算法的邏輯，而不是處理圖像複雜的計算。<a id="more"></a></p>
+<h2 id="RenderScript"><a href="#RenderScript" class="headerlink" title="RenderScript"></a>RenderScript</h2><p><code>RenderScript</code>根據<code>Android</code>官方網站的介紹，在計算的效率上，能充分利用GPU，CPU的計算能力，所以在編寫代碼的時候，毋須擔心具體硬件的不同，都能寫出具高效率的代碼。此篇文章實現的<code>Gaussian blur</code>效果，只是使用到了<code>RenderScript</code>其中一個操作類<code>ScriptIntrinsicBlur</code>，<code>RenderScript</code>Api的強大遠不及此，更詳情可以參考 <a href="https://developer.android.com/guide/topics/renderscript/compute">Android 官網 RenderScript介紹</a></p>
+<h3 id="添加Api依賴庫"><a href="#添加Api依賴庫" class="headerlink" title="添加Api依賴庫"></a>添加Api依賴庫</h3><p>添加此依賴庫也很簡單，只要在<code>app/build.gradle</code>文件，在<code>android/defaultConfig</code>配置中添加兩行代碼：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">	...</span><br><span class="line">   defaultConfig &#123;</span><br><span class="line">    ...</span><br><span class="line">      renderscriptTargetApi 18</span><br><span class="line">      renderscriptSupportModeEnabled true</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代碼實現起來也很簡單，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Bitmap <span class="title">blurBitmap</span><span class="params">(Bitmap bitmap)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Let's create an empty bitmap with the same size of the bitmap we want to blur</span></span><br><span class="line">        Bitmap outBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Instantiate a new Renderscript</span></span><br><span class="line">        RenderScript rs = RenderScript.create(getApplicationContext());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Create an Intrinsic Blur Script using the Renderscript</span></span><br><span class="line">        ScriptIntrinsicBlur blurScript = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Create the Allocations (in/out) with the Renderscript and the in/out bitmaps</span></span><br><span class="line">        Allocation allIn = Allocation.createFromBitmap(rs, bitmap);</span><br><span class="line">        Allocation allOut = Allocation.createFromBitmap(rs, outBitmap);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Set the radius of the blur: 0 &lt; radius &lt;= 25</span></span><br><span class="line">        blurScript.setRadius(<span class="number">25.0f</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Perform the Renderscript</span></span><br><span class="line">        blurScript.setInput(allIn);</span><br><span class="line">        blurScript.forEach(allOut);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Copy the final bitmap created by the out Allocation to the outBitmap</span></span><br><span class="line">        allOut.copyTo(outBitmap);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//recycle the original bitmap</span></span><br><span class="line">        bitmap.recycle();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//After finishing everything, we destroy the Renderscript.</span></span><br><span class="line">        rs.destroy();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> outBitmap;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>透過設置模糊半徑<code>radius</code>大小來控制圖片的清晰度。<br></br><br>這邊值得注意的是<code>ScriptIntrinsicBlur</code>只支援API17以上版本，為了兼容舊版，Google提供了<code>android.support.v8.renderscript</code>兼容包，使用時只要引入該兼容包下相關的類別即可。<br></br><br></br><br>效果如下:<br></br><br></br><br><img src="gaussian_blur_effect01.gif" width=50% height=50% align=center/></p>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+<p>參考資料：<br></br><br><a href="https://developer.android.com/guide/topics/renderscript/compute">Android RenderScript</a><br></br><br><a href="https://zh.wikipedia.org/wiki/Renderscript">維基百科介紹 Renderscript</a><br></br><br><a href="https://blog.csdn.net/huachao1001/article/details/51524502">CSDN-huachao1001部落格</a><br></br></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/Blog/tags/Android/" rel="tag">Android</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Blog/2018/11/16/Android-Bottom-Sheets/">
+                <span class="level-item">[Android] Bottom Sheets</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://nickchen450.github.io/Blog/2018/12/01/Android-Gaussian-blur-Effect/';
+        this.page.identifier = '2018/12/01/Android-Gaussian-blur-Effect/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'disqus_jRZqibHSyi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
                 
 
 
@@ -789,7 +886,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/Blog/">
                 
-                    <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                    <img src="/Blog/images/logo.svg" alt="[Android] Gaussian blur Effect" height="28">
                 
                 </a>
                 <p class="is-size-7">
