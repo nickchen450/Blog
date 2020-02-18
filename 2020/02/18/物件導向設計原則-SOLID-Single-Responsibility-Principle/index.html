@@ -7,17 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Archives - 代碼玩家 Nick&#39;s Blog</title>
+<title>物件導向設計原則(SOLID)#1 - Single Responsibility Principle - 代碼玩家 Nick&#39;s Blog</title>
 
 
-    <meta name="description" content="Coding for fun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:url" content="https://nickchen450.github.io/Blog/archives/page/2/index.html">
+    <meta name="description" content="物件導向設計本身就具有封裝、繼承、多型、抽象這些特性。 那麼是否掌握這些特性，就可以寫出具備閱讀性、維護性、擴充性的程式碼呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物件導向設計原則(SOLID)#1 - Single Responsibility Principle">
+<meta property="og:url" content="https://nickchen450.github.io/Blog/2020/02/18/%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87-SOLID-Single-Responsibility-Principle/index.html">
 <meta property="og:site_name" content="代碼玩家 Nick&#39;s Blog">
-<meta property="og:description" content="Coding for fun">
+<meta property="og:description" content="物件導向設計本身就具有封裝、繼承、多型、抽象這些特性。 那麼是否掌握這些特性，就可以寫出具備閱讀性、維護性、擴充性的程式碼呢？">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
+<meta property="article:published_time" content="2020-02-18T14:35:52.000Z">
+<meta property="article:modified_time" content="2020-02-18T08:43:54.784Z">
 <meta property="article:author" content="Nick Chen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://nickchen450.github.io/Blog/images/og_image.png">
@@ -78,7 +80,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/Blog/">
             
-                <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                <img src="/Blog/images/logo.svg" alt="物件導向設計原則(SOLID)#1 - Single Responsibility Principle" height="28">
             
             </a>
         </div>
@@ -128,202 +130,154 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2018
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-18T14:35:52.000Z">2020-02-18</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-22T10:30:45.000Z">2018-01-22</time>
-                        <a href="/Blog/2018/01/22/MaterialDesign-Android-Snackbar/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[MaterialDesign] Android Snackbar</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-18T14:20:24.000Z">2018-01-18</time>
-                        <a href="/Blog/2018/01/18/MaterialDesign-Android-Dialogs/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[MaterialDesign] Android Dialogs</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 read (About 616 words)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-17T13:33:51.000Z">2018-01-17</time>
-                        <a href="/Blog/2018/01/17/MaterialDesign-Android-Progress-Bar/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[MaterialDesign] Android Progress Bar</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-15T16:15:57.000Z">2018-01-15</time>
-                        <a href="/Blog/2018/01/15/MaterialDesign-Android-Selection-Controls/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[MaterialDesign] Android Selection Controls</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-12T14:43:24.000Z">2018-01-12</time>
-                        <a href="/Blog/2018/01/12/MaterialDesign-Android-Buttons/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[MaterialDesign] Android Buttons</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-07T16:17:53.000Z">2018-01-07</time>
-                        <a href="/Blog/2018/01/07/MaterialDesign-Android-Text-Fields/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[Material Design] Android Text Fields</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-01-01T14:56:36.000Z">2018-01-01</time>
-                        <a href="/Blog/2018/01/01/MaterialDesign-Android-Navigation-Drawer(%E4%B8%89)-Customize-the-Navigation-Drawer/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[Material Design] Android Navigation Drawer(三) - Customize the Navigation Drawer</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                物件導向設計原則(SOLID)#1 - Single Responsibility Principle
+            
+        </h1>
+        <div class="content">
+            <p>物件導向設計本身就具有<code>封裝</code>、<code>繼承</code>、<code>多型</code>、<code>抽象</code>這些特性。</p>
+<p>那麼是否掌握這些特性，就可以寫出具備<code>閱讀性</code>、<code>維護性</code>、<code>擴充性</code>的程式碼呢？</p>
+<a id="more"></a>
+<p>非也…</p>
+<div align="center">
+    <img src="still_too_young.gif" width=30% height=30% align=center>
+</div>
+
+</br>
+</br>
+
+<p>在物件導向開發軟體的過程中，遵守<code>Robert C. Martin</code>提出的物件導向設計的五個原則(<code>SOLID</code>)。這樣會更容易開發出易維護與可擴展的系統。</p>
+<table>
+<thead>
+<tr>
+<th>縮寫</th>
+<th align="center">英文全名</th>
+<th>中譯</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SRP</td>
+<td align="center">Single Responsibility Principle</td>
+<td>單一職責原則</td>
+</tr>
+<tr>
+<td>OCP</td>
+<td align="center">Open Closed Principle</td>
+<td>開放封閉原則</td>
+</tr>
+<tr>
+<td>LSP</td>
+<td align="center">Liskov Substitution Principle</td>
+<td>里氏替換原則</td>
+</tr>
+<tr>
+<td>ISP</td>
+<td align="center">Interface Segregation Principles</td>
+<td>介面隔離原則</td>
+</tr>
+<tr>
+<td>DIP</td>
+<td align="center">Dependency Inversion Principle</td>
+<td>依賴反轉原則</td>
+</tr>
+</tbody></table>
+</br>
+
+<h3 id="Single-Responsibility"><a href="#Single-Responsibility" class="headerlink" title="Single Responsibility"></a>Single Responsibility</h3><p>對於不熟的開發者，很常犯的錯誤就是把很多功能寫在同一個 class，雖然讓這個 class 擁有許多功能，但也大大增加了維護的困難。整體來說<code>Z&gt;B</code>(利大於弊)。</p>
+<p>那麼要做的是很簡單，讓 class 一次只做一件事，並移除與這件事情無關的程式碼和變數。</p>
+<blockquote>
+<p>Do one thing and do it well.</p>
+</blockquote>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StockReporter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查詢股票更新時間</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> symbol 股市代號</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getStockUpdateTime</span><span class="params">(String symbol)</span> </span>&#123;</span><br><span class="line">        Stock stock = queryStockFromServer(symbol);</span><br><span class="line">        <span class="keyword">return</span> stock.getTime();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 從服務器取得股票資料</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> symbol 股市代號</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Stock <span class="title">queryStockFromServer</span><span class="params">(String symbol)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 模擬從 API 取得資料</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Stock(</span><br><span class="line">                <span class="string">"ATA CREATIVITY GLOBAL - ADR"</span>,</span><br><span class="line">                <span class="string">"AACG"</span>,</span><br><span class="line">                <span class="number">1.16f</span>,</span><br><span class="line">                <span class="string">"2020-02-18"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這個範例很明顯違反了 Single Responsibility 原則</p>
+<blockquote>
+<p>要改變資料取得方式，必須修改這個 Class</p>
+</blockquote>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><h5 id="改變資料取得方式"><a href="#改變資料取得方式" class="headerlink" title="改變資料取得方式"></a>改變資料取得方式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 從服務器取得股票資料</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> symbol 股市代號</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Stock <span class="title">queryStockFromServer</span><span class="params">(String symbol)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 模擬從 API 取得資料</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Stock(</span><br><span class="line">            <span class="string">"ATA CREATIVITY GLOBAL - ADR"</span>,</span><br><span class="line">            <span class="string">"AACG"</span>,</span><br><span class="line">            <span class="number">1.16f</span>,</span><br><span class="line">            <span class="string">"2020-02-18"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用-Repository-來取得資料"><a href="#使用-Repository-來取得資料" class="headerlink" title="使用 Repository 來取得資料"></a>使用 Repository 來取得資料</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Repository</span> </span>&#123;</span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * 從服務器取得股票資料</span></span><br><span class="line"><span class="comment">        *</span></span><br><span class="line"><span class="comment">        * <span class="doctag">@param</span> symbol 股市代號</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> Stock <span class="title">queryStockFromServer</span><span class="params">(String symbol)</span> </span>&#123;</span><br><span class="line">           <span class="comment">// 模擬從 API 取得資料</span></span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">new</span> Stock(</span><br><span class="line">                   <span class="string">"ATA CREATIVITY GLOBAL - ADR"</span>,</span><br><span class="line">                   <span class="string">"AACG"</span>,</span><br><span class="line">                   <span class="number">1.16f</span>,</span><br><span class="line">                   <span class="string">"2020-02-18"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>因此，<code>StockReporter</code> 修改如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StockReporter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Repository repository;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StockReporter</span><span class="params">(Repository repository)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.repository = repository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查詢股票更新時間</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> symbol 股市代號</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getStockUpdateTime</span><span class="params">(String symbol)</span> </span>&#123;</span><br><span class="line">        Stock stock = repository.queryStockFromServer(symbol);</span><br><span class="line">        <span class="keyword">return</span> stock.getTime();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>讓取得資料的相依關係透過 <code>Repository</code> 來處理</p>
+<p>如此一來，當我們要更改取得資料這段邏輯的時候，便不需要更改 <code>StockReporter</code> 了。</p>
+<p>最後 <code>StockReporter</code> 使用方式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">use</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    StockReporter reporter = StockReporter(<span class="keyword">new</span> Repository();</span><br><span class="line">    </span><br><span class="line">    String updateTime = reporter.getStockUpdateTime(<span class="string">"AACG"</span>);</span><br><span class="line">    </span><br><span class="line">    System.out.println(<span class="string">"AACG update time: "</span> + updateTime);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
     </div>
 </div>
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2017
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-12-30T14:59:16.000Z">2017-12-30</time>
-                        <a href="/Blog/2017/12/30/MaterialDesign-Android-Navigation-Drawer(%E4%BA%8C)-Add-OnClickListener/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[Material Design] Android Navigation Drawer(二) - Add OnClickListener</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-12-30T14:26:14.000Z">2017-12-30</time>
-                        <a href="/Blog/2017/12/30/MaterialDesign-Android-Navigation-Drawer(%E4%B8%80)/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[Material Design] Android Navigation Drawer(一)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2017-11-26T13:57:50.000Z">2017-11-26</time>
-                        <a href="/Blog/2017/11/26/MaterialDesign-Android-Toolbar(%E4%B8%89)-Add-Action/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[Material Design] Android Toolbar(三) - Add-Action</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
-    </div>
-</div>
 
-    
 
-    
+
+
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/Blog/archives/">Previous</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Blog/2018/12/01/Android-Gaussian-blur-Effect/">
+                <span class="level-item">[Android] Gaussian blur Effect</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/Blog/archives/page/3/">Next</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/Blog/archives/">1</a></li>
-            
-            <li><a class="pagination-link is-current" href="/Blog/archives/page/2/">2</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/Blog/archives/page/3/">3</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://nickchen450.github.io/Blog/2020/02/18/%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87-SOLID-Single-Responsibility-Principle/';
+        this.page.identifier = '2020/02/18/物件導向設計原則-SOLID-Single-Responsibility-Principle/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'disqus_jRZqibHSyi' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
 </div>
 </div>
                 
@@ -995,7 +949,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/Blog/">
                 
-                    <img src="/Blog/images/logo.svg" alt="代碼玩家 Nick&#39;s Blog" height="28">
+                    <img src="/Blog/images/logo.svg" alt="物件導向設計原則(SOLID)#1 - Single Responsibility Principle" height="28">
                 
                 </a>
                 <p class="is-size-7">
