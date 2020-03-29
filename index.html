@@ -141,7 +141,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 read (About 328 words)
+                    2 分鐘 read (About 329 words)
                 </span>
                 
                 
@@ -159,23 +159,16 @@
 </blockquote>
 <p>在軟體開發中，對於擴展是開放，對於修改是封閉，用來避免改A壞B的情形，講白了就是不去動舊的程式碼，而是對於新增的程式碼補上測試就好。</p>
 <p>什麼意思呢？</p>
-<div align="center">
-    <img src="example.jpeg" width=30% height=30% align=center>
-</div>
-
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>假如現在要開發第三平台登入功能，以前程式碼可能寫成這樣。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthController</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(Auth authData)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (authData.type.equals(<span class="string">"facebook"</span>)) &#123;</span><br><span class="line">            <span class="comment">// 實作 facebook 登入</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (authData.type.equals(<span class="string">"google"</span>))&#123;</span><br><span class="line">            <span class="comment">// 實作 google 登入</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但如果再增加另一個第三方登入，則會破壞原本的結構。使用<code>OCP</code>的寫法會這樣。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ISocial</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">login</span><span class="params">(Auth authData)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Facebook</span> <span class="keyword">implements</span> <span class="title">ISocial</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(Auth authData)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 實作 facebook 登入</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Google</span> <span class="keyword">implements</span> <span class="title">ISocial</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(Auth authData)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 實作 google 登入</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OtherSocial</span> <span class="keyword">implements</span> <span class="title">ISocial</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(Auth authData)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 實作其他第三方登入</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接著重構<code>AuthController</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthController</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(ISocial social, Auth authData)</span> </span>&#123;</span><br><span class="line">        social.login(authData);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如此一來，就算新增了其他第三方平台登入方式，也不會去改動到原本的程式碼</p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/Blog/2020/02/19/%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87-SOLID-2-Open-Closed-Principle/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
