@@ -11,7 +11,7 @@ tags:
 在軟體開發中，對於擴展是開放，對於修改是封閉，用來避免改A壞B的情形，講白了就是不去動舊的程式碼，而是對於新增的程式碼補上測試就好。
 
 什麼意思呢？
-
+<!-- more -->
 <div align="center">
     <img src="example.jpeg" width=30% height=30% align=center>
 </div>
